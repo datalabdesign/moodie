@@ -135,5 +135,4 @@ Este módulo está sob uma **Licença de Uso Restrito com Atribuição**.
 ---
 
 ## ✦ Como citar (formato APA)
-
-Bitencourt, E. (2025). *MOODIE Grabber: módulo de coleta de imagens da ferramenta MOODIE* (Versão beta) [Notebook Jupyter]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
+Bitencourt, E. (2025). *MOODIE: Modular Observational & Operational Design Image Explorer* (Versão beta) [Repositório GitHub]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
