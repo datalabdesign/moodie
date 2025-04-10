@@ -130,7 +130,7 @@ Este módulo está sob uma **Licença de Uso Restrito com Atribuição**.
 
 - O conteúdo pode ser utilizado para fins acadêmicos e não-comerciais, com devida **atribuição ao autor**.
 - **Modificações e redistribuições não são permitidas sem autorização expressa**.
-- Para mais detalhes, veja [`LICENSE.txt`](../LICENSE.txt).
+- Para mais detalhes, veja [`LICENSE.txt`](https://github.com/datalabdesign/moodie/blob/main/LICENCE.txt).
 
 ---
 
