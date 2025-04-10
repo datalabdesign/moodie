@@ -2,36 +2,75 @@
 
 # MOODIE
 
-O MOODIE é uma ferramenta desenvolvida especialmente para designers, com um foco pedagógico e prático para aproximá-los dos métodos digitais e das ferramentas computacionais. Inspirado na ideia de um moodboard e pensado de forma lúdica, o MOODIE busca facilitar o trabalho com imagens e dados extraídos da web, permitindo que designers experimentem, aprendam e apliquem técnicas digitais em seus projetos.
+**MOODIE** (Modular Observational & Operational Design Image Explorer) é uma ferramenta experimental em fase beta voltada à exploração visual e análise de imagens para fins pedagógicos e criativos. Organizado em três módulos independentes — *Download*, *Metadata* e *Trends* — o MOODIE foi desenvolvido para aproximar designers de métodos digitais e ferramentas computacionais, estimulando novas formas de pesquisa visual, mapeamento de tendências e montagem de moodboards.
 
-## Visão Geral
+Atualmente, apenas o módulo **Download** está disponível para uso. Os demais módulos encontram-se em desenvolvimento.
 
-O MOODIE foi concebido para integrar e simplificar fluxos de trabalho que envolvam a coleta, o processamento e a análise de imagens. Atualmente, o MOODIE é composto por módulos independentes que podem ser utilizados tanto de forma isolada quanto em conjunto, possibilitando uma abordagem modular para atender diversas necessidades:
+---
 
-- **Módulo Download**: Automatiza o download de imagens a partir de links presentes em datasets (CSV), com opções avançadas de renomeação, extração de metadados e atualização do dataset original.
-- **Módulo de Imagens**: (Em desenvolvimento ou implementação conforme a evolução do projeto) Destinado à manipulação, tratamento e análise visual das imagens baixadas.
-- **Outros Módulos**: O projeto é pensado para expansão, permitindo a integração com novas funcionalidades que venham a complementar ou ampliar as capacidades do MOODIE.
+## ✦ Módulos da Ferramenta
 
-## Motivação e Contexto
+### 1. Módulo `download`
+Permite baixar imagens a partir de uma coluna com links em um arquivo CSV. Entre as funcionalidades disponíveis:
 
-Inicialmente criado para uso pedagógico, o MOODIE foi concebido com o intuito de aproximar designers de práticas computacionais aplicadas, facilitando a experimentação e o aprendizado. Ao lidar com processos automatizados, como download e processamento de imagens, o MOODIE serve como um ponto de partida para que profissionais criativos possam explorar e se apropriar de métodos digitais, integrando-os de maneira intuitiva aos seus fluxos de trabalho.
+- **Sampleamento estatístico** do dataset completo;
+- **Remoção de duplicatas** visuais (via pHash);
+- **Downsample ou upsample** de conjuntos desequilibrados;
+- **Opções de nomeação** das imagens: nome original do link, hash pHash ou hash hexadecimal;
+- **Extração de metadados básicos**, como:
+  - EXIF (quando disponível),
+  - Domínio do link,
+  - Tamanho e formato da imagem;
+- Geração de um **dataset com os metadados** coletados.
 
-## Funcionalidades
+### 2. Módulo `metadata` (em desenvolvimento)
+Permite análise e extração de metadados a partir de uma pasta ou arquivo `.zip` contendo imagens, sem a necessidade de um CSV. Funcionalidades previstas:
 
-- **Integração com Webscraping**: Processa datasets extraídos de ferramentas de webscraping, permitindo o download automático de imagens.
-- **Renomeação Inteligente**: Oferece diferentes estratégias para nomear as imagens baixadas (utilizando o nome original, um hash hexadecimal ou o pHash da imagem), evitando duplicações e facilitando a organização.
-- **Extração de Metadados**: Coleta informações relevantes de cada imagem, como dimensões, tamanho do arquivo e metadados EXIF, enriquecendo o dataset.
-- **Atualização de Datasets**: Permite a criação ou atualização do CSV original com as informações extraídas e os nomes das imagens baixadas.
-- **Geração de Relatórios**: Cria relatórios detalhados sobre o processo de download, auxiliando na verificação de erros e inconsistências.
+- Renomear imagens com hash hexadecimal ou pHash;
+- Extrair metadados básicos (dimensões, formato, EXIF);
+- Gerar paletas de cores dominantes e representativas para cada imagem, salvas como `.png`;
+- Exportar um dataset com os dados extraídos, para uso posterior no módulo Trends.
 
-## Requisitos
+### 3. Módulo `trends` (em desenvolvimento)
+Recebe como entrada uma pasta de imagens e o dataset gerado por um dos módulos anteriores. Este módulo permitirá:
 
-- **Python 3.6+**
-- **Bibliotecas Python**: `pandas`, `requests`, `Pillow`, `tqdm`, `ipywidgets`, `imagehash`, entre outras.
-- **Ambiente Recomendo**: Google Colab ou outra interface interativa para notebooks Jupyter.
+- Enriquecimento dos dados com:
+  - Extração de cores,
+  - Extração de *features* com diferentes modelos de visão computacional;
+- Visualizações baseadas em:
+  - Similaridade entre imagens,
+  - Critérios definidos por relevância ou variáveis do dataset;
+- Sistema de **recomendação visual**:
+  - O usuário fornece uma imagem de referência (interna ou externa),
+  - Define os critérios de recomendação (features, cor, tamanho, etc.),
+  - Recebe uma *imagewall* com imagens similares, relatório de tendências e paletas sugeridas.
 
-## Instalação e Execução
+---
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu_usuario/moodie.git
+## ✦ Objetivo
+
+MOODIE é uma ferramenta **pedagógica** criada para explorar a interseção entre design, imaginação computacional e métodos digitais. O projeto visa fornecer um ambiente de experimentação acessível a estudantes, pesquisadores e designers interessados em usar dados visuais como matéria-prima para investigações criativas e analíticas.
+
+---
+
+## ✦ Sobre o Autor
+
+**Elias Bitencourt** é Professor Adjunto no Curso de Design da Universidade do Estado da Bahia (UNEB), com Doutorado em Comunicação pela FACOM/UFBA e Mestrado em Cultura e Sociedade pelo IHAC/UFBA. Foi pesquisador visitante no Centro Milieux (Concordia University, Canadá) em 2019.
+
+Atualmente, coordena o **Datalab/Design (CNPq)** na UNEB, um centro de pesquisa em visualização de dados e metodologias digitais. Sua pesquisa investiga visualização de dados, estudos de plataformas, imaginários digitais e mediação algorítmica nas relações sociais. É pesquisador colaborador no **Inova Media Lab** (Universidade Nova de Lisboa) e na rede internacional **Public Data Lab**.
+
+---
+
+## ✦ Status
+
+O projeto encontra-se em **fase beta** e está em desenvolvimento contínuo. Contribuições, sugestões e colaborações são bem-vindas.
+
+---
+
+## ✦ Licença
+
+Este repositório está sob uma **Licença de Uso Restrito com Atribuição**.  
+O conteúdo pode ser utilizado para fins acadêmicos e não-comerciais com devida atribuição ao autor.  
+Modificações ou redistribuição exigem permissão.  
+Veja o arquivo [`LICENSE.txt`](./LICENSE.txt) para mais detalhes.
+
