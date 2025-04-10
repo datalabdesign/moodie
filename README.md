@@ -47,13 +47,13 @@ Recebe como entrada uma pasta de imagens e o dataset gerado por um dos módulos 
 
 ---
 
-## ✦ Objetivo
+## Objetivo
 
 MOODIE é uma ferramenta **pedagógica** criada para explorar a interseção entre design, imaginação computacional e métodos digitais. O projeto visa fornecer um ambiente de experimentação acessível a estudantes, pesquisadores e designers interessados em usar dados visuais como matéria-prima para investigações criativas e analíticas.
 
 ---
 
-## ✦ Sobre o Autor
+## Sobre o Autor
 
 **Elias Bitencourt** é Professor Adjunto no Curso de Design da Universidade do Estado da Bahia (UNEB), com Doutorado em Comunicação pela FACOM/UFBA e Mestrado em Cultura e Sociedade pelo IHAC/UFBA. Foi pesquisador visitante no Centro Milieux (Concordia University, Canadá) em 2019.
 
@@ -61,20 +61,20 @@ Atualmente, coordena o **Datalab/Design (CNPq)** na UNEB, um centro de pesquisa 
 
 ---
 
-## ✦ Status
+## Status
 
 O projeto encontra-se em **fase beta** e está em desenvolvimento contínuo. Contribuições, sugestões e colaborações são bem-vindas.
 
 ---
 
-## ✦ Licença
+## Licença
 
 Este repositório está sob uma **Licença de Uso Restrito com Atribuição**.  
 O conteúdo pode ser utilizado para fins acadêmicos e não-comerciais com devida atribuição ao autor.  
 Modificações ou redistribuição exigem permissão.  
 Veja o arquivo [`LICENSE.txt`](./LICENSE.txt) para mais detalhes.
 
-##Como citar este repositório (formato APA):
+## Como citar este repositório (formato APA):
 
 Bitencourt, E. (2025). *MOODIE: Modular Observational & Operational Design Image Explorer* (Versão beta) [Repositório GitHub]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
 
