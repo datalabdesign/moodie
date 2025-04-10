@@ -1,3 +1,4 @@
+<img src="MOODIE_GRABBER.png" alt="Logo MOODIE" width="400"/>
 
 # MOODIE Grabber (Módulo de Coleta de Imagens)
 
@@ -13,8 +14,8 @@ O MOODIE Grabber permite:
 
 - Leitura de um **CSV contendo links de imagens** (campo configurável);
 - **Sampleamento estatístico** do dataset completo:
-  - Amostragem proporcional, aleatória, por classe ou por tamanho;
-- **Remoção de duplicatas visuais** com base em `pHash` e distância de Hamming;
+  - Amostragem proporcional, aleatória, por classe ou por tamanho (upsample/downsample);
+- **Remoção de duplicatas com base na seleção de colunas específicas**
 - **Download automático das imagens**, com:
   - Opção de nomeação: nome original, hash hexadecimal, ou hash perceptual;
 - **Extração automática de metadados básicos**:
@@ -28,60 +29,94 @@ O MOODIE Grabber permite:
 
 ## ✦ Requisitos
 
-Este módulo é compatível com o Google Colab, sem necessidade de instalação local. As bibliotecas utilizadas são instaladas automaticamente no ambiente Colab:
+Este módulo é compatível com o Google Colab, sem necessidade de instalação local. As bibliotecas utilizadas são automaticamente disponíveis no ambiente Colab:
 
 - `pandas`
 - `numpy`
-- `PIL`
+- `PIL` (do pacote `Pillow`)
 - `imagehash`
 - `tqdm`
 - `requests`
+- `ipywidgets`
+- `matplotlib`
 - `IPython.display`
-- Bibliotecas padrão do Python (`os`, `shutil`, `pathlib`, etc.)
 
 ---
 
 ## ✦ Como usar
 
-1. Prepare um arquivo `.csv` com pelo menos uma coluna contendo os links de imagens. Exemplo:
+A execução do MOODIE Grabber no Google Colab é feita **passo a passo, executando as células do notebook na ordem** e interagindo com a interface. Abaixo, um resumo prático de cada etapa:
+
+### 0.0 Antes de começar, vamos precisar de um CSV
+Prepare um arquivo `.csv` com pelo menos uma coluna contendo os links de imagens, como no exemplo abaixo
+
+| col a  | link_imagem                 |
+|----------|-----------------------------|
+| ........ | https://exemplo.com/img1.jpg |
+| ........ | https://exemplo.com/img2.jpg |
+
+
+
+### 01. Instalando as dependências
+Clique no botão **“Instalar Dependências”** e aguarde a instalação dos pacotes necessários.
+
+### 02. Conectando ao Google Drive (opcional, mas recomendado)
+O MOODIE funciona melhor se você estiver conectado ao seu Google Drive. Isso ajuda a evitar lentidão com arquivos grandes e mantém seus dados salvos entre sessões.
+
+Se preferir, também é possível continuar trabalhando apenas com uploads locais, sem o Drive.
+
+### 03. Criando diretórios de trabalho
+Você poderá configurar:
+- Se deseja salvar os dados no seu Google Drive ou apenas no ambiente temporário do Colab;
+- Se já tem uma pasta existente ou deseja criar um novo diretório para o projeto;
+- O nome do projeto, que será usado para nomear arquivos; ex: `dataset_nome_do_projeto.csv`
+- Notas sobre o projeto, que serão registradas para referência futura.
+
+Defina os parâmetros de execução no início do notebook:
+- Caminho do arquivo CSV;
+- Nome da coluna com os links;
+- Caminho da pasta onde salvar as imagens.
+
+A estrutura de pastas criada é pensada para integração com os outros módulos da ferramenta MOODIE, embora este módulo utilize apenas algumas delas:
 
 ```
-id,titulo,link_imagem
-1,Imagem A,https://exemplo.com/img1.jpg
-2,Imagem B,https://exemplo.com/img2.jpg
+/seu diretório
+├── datasets  ---> Local onde os datasets em csv serão salvos
+├── reports  ---> Local onde os relatórios e documentações dos processamentos serão salvos
+├── imagens  ---> Local onde as imagens baixadas ficam armazenadas
+├── imagewall  ---> Local onde as visualizações de dados das imagewals ficam armazenadas (módulo trends)
+├── paleta  ---> Local onde as paletas de cores extraídas do dataset serão salvas (módulo metadata e trends
 ```
 
-2. Defina os parâmetros de execução no início do notebook:
-   - Caminho do arquivo CSV;
-   - Nome da coluna com os links;
-   - Caminho da pasta onde salvar as imagens.
 
-3. Execute célula por célula no notebook, ajustando as opções de amostragem, nomeação e deduplicação conforme necessário.
+### 04. Upload e análise do CSV (obrigatório)
+Você fará upload de um CSV contendo os links das imagens. O MOODIE irá:
+- Ler o arquivo e armazenar os dados em um DataFrame global;
+- Exibir colunas e tipos de dados;
+- Identificar valores ausentes;
+- Analisar colunas com valores únicos;
+- Sugerir possíveis chaves para identificação de duplicatas.
 
-4. Ao final da execução, será gerado um dataset `.csv` com os dados das imagens baixadas.
+### 05. Remoção de duplicatas (opcional)
+Com base na análise anterior, você pode optar por remover duplicatas usando colunas específicas. Tenha atenção:
+- Só remova se tiver certeza que são duplicatas;
+- Bases com memes ou imagens virais podem repetir conteúdo com propósito;
+- Guarde sempre uma cópia do CSV original.
 
----
+### 06. Sampleamento do dataset (opcional)
+Você pode aplicar amostragem para:
+- Reduzir o tamanho do dataset;
+- Balancear categorias;
+- Testar com subconjuntos antes de processar tudo.
 
-## ✦ Exemplo de uso
+### 07. Estratégias de nomeação de imagens
+Antes de baixar, escolha como deseja nomear os arquivos:
+- **Nome Original**: mantém o nome da imagem conforme o link (pode gerar conflitos se houver nomes repetidos);
+- **HEX**: gera nomes únicos com identificadores hexadecimais;
+- **pHash**: usa o hash perceptual da imagem, útil para identificar visualmente imagens parecidas.
 
-- Coletar 500 imagens balanceadas por categoria;
-- Eliminar duplicatas com `pHash` (limiar: 6);
-- Salvar imagens com hash hexadecimal como nome;
-- Gerar dataset com colunas: `image_name`, `phash`, `link`, `domain`, `filesize`, `dimensions`, `EXIF`.
+### Após configurar, **basta seguir executando as células uma a uma**, sempre lendo as instruções e respondendo os widgets exibidos. O MOODIE cuidará do restante automaticamente.  Ao final da execução, será gerado um dataset `.csv` com os dados das imagens baixadas e você poderá acessar tudo em cada um dos subdiretórios criados conforme a árvore indicada acima.
 
----
-
-## ✦ Sobre a Ferramenta MOODIE
-
-**MOODIE** (Modular Observational & Operational Design Image Explorer) é uma ferramenta composta por três módulos:
-
-- **Grabber** (coleta e download)
-- **Metadata** (extração e organização)
-- **Trends** (exploração visual e recomendação)
-
-O projeto foi idealizado como uma ferramenta **pedagógica**, para aproximar designers dos métodos digitais e da imaginação computacional aplicada ao design e às visualidades contemporâneas.
-
----
 
 ## ✦ Sobre o Autor
 
