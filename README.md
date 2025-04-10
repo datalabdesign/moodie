@@ -1,4 +1,4 @@
-<img src="LOGO_MOODIE.png" alt="Logo MOODIE" width="200"/>
+<img src="LOGO_MOODIE.png" alt="Logo MOODIE" width="400"/>
 
 # MOODIE
 
