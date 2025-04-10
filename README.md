@@ -2,7 +2,7 @@
 
 # MOODIE
 
-**MOODIE** (Modular Observational & Operational Design Image Explorer) é uma ferramenta experimental em fase beta voltada à exploração visual e análise de imagens para fins pedagógicos e criativos. Organizado em três módulos independentes — *Download*, *Metadata* e *Trends* — o MOODIE foi desenvolvido para aproximar designers de métodos digitais e ferramentas computacionais, estimulando novas formas de pesquisa visual, mapeamento de tendências e montagem de moodboards.
+**MOODIE** (Modular Observational & Operational Design Image Explorer) é uma ferramenta experimental em fase beta voltada à exploração visual e análise de imagens para fins pedagógicos e criativos. Organizado em três módulos independentes — *Grabber*, *Metadata* e *Trends* — o MOODIE foi desenvolvido para aproximar designers de métodos digitais e ferramentas computacionais, estimulando novas formas de pesquisa visual, mapeamento de tendências e montagem de moodboards.
 
 Atualmente, apenas o módulo **Download** está disponível para uso. Os demais módulos encontram-se em desenvolvimento.
 
@@ -10,7 +10,7 @@ Atualmente, apenas o módulo **Download** está disponível para uso. Os demais 
 
 ## ✦ Módulos da Ferramenta
 
-### 1. Módulo `download`
+### 1. Módulo `Image Grabber`
 Permite baixar imagens a partir de uma coluna com links em um arquivo CSV. Entre as funcionalidades disponíveis:
 
 - **Sampleamento estatístico** do dataset completo;
