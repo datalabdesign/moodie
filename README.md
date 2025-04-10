@@ -74,3 +74,7 @@ O conteúdo pode ser utilizado para fins acadêmicos e não-comerciais com devid
 Modificações ou redistribuição exigem permissão.  
 Veja o arquivo [`LICENSE.txt`](./LICENSE.txt) para mais detalhes.
 
+##Como citar este repositório (formato APA):
+
+Bitencourt, E. (2025). *MOODIE: Modular Observational & Operational Design Image Explorer* (Versão beta) [Repositório GitHub]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
+
