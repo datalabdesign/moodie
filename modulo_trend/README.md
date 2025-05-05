@@ -1,6 +1,6 @@
 
-<p align="center">
-  <img src="MOODIE_TRENDS.png" alt="Logo MOODIE Image Trends" width="320"/>
+<p align="left">
+  <img src="LOGO_MOODIE.png" alt="Logo MOODIE Image Trends" width="320"/>
 </p>
 
 # MOODIE Image Trends &nbsp;·&nbsp; guia passo‑a‑passo
