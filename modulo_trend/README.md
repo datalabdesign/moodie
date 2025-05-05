@@ -51,6 +51,9 @@ Inicialmente concebido como ferramenta pedagógica para as disciplinas de Introd
 ## 2. Módulos detalhados
 
 ### 2.1 Amostragem (Sample Dataset)
+> **Objetivo**  
+> Criar um subconjunto representativo (ou balanceado) do corpus – seja via downsizing, upsizing ou amostra aleatória – permitindo prototipagem rápida e controle do número de imagens processadas.
+
 *Uso opcional* — permite selecionar subconjuntos amostrais por aleatoriedade. Se você tem um dataset com csv, a interface irá te oferecer algumas opções de amostragem. Se você possui apenas um conjunto de imagens, a interface detecta automaticamente e permite apenas que vc informe o total de imagens que vc deseja na sua amostra final.
 
 | Entrada | Método | Indicado quando |
@@ -60,8 +63,9 @@ Inicialmente concebido como ferramenta pedagógica para as disciplinas de Introd
 | CSV/IMAGEM | Random Sample | Utilize para selecionar um número aleatório de amostras do dataset inteiro, sem considerar as categorias. Útil para obter uma visão geral rápida do dataset ou quando as categorias não são relevantes para a amostragem. Se estiver usando apenas imagens, esta é a única opção disponível para criar um subconjunto aleatório. |
 
 
-### 2.2 Extração de *features*
 ### 2.2 Extração de Características Visuais das Imagens
+> **Objetivo**  
+> Converter cada imagem em um vetor numérico (embedding) usando modelos CNN pré‑treinados, fornecendo a base matemática para todas as comparações de similaridade visual.
 
 O Moodie utiliza modelos de inteligência artificial pré-treinados para "ler" suas imagens e transformá-las em representações numéricas, chamadas de "características visuais" (ou *features*). Pense nisso como se cada imagem ganhasse um código secreto que descreve o que ela contém visualmente.
 
@@ -94,6 +98,9 @@ Ao final dessa etapa, suas imagens estarão representadas numericamente, prontas
 ---
 
 ### 2.3 Remoção de Duplicatas Visuais
+> **Objetivo**  
+> Detectar e separar cópias exatas ou quase idênticas (hash, pHash e embedding) para manter somente imagens únicas e evitar viés nas análises seguintes.
+
 
 Depois de extrair as características visuais das suas imagens, o Moodie pode identificar e remover automaticamente imagens duplicadas ou muito semelhantes em sua coleção. Isso é útil para limpar seu dataset, evitar redundâncias nas análises futuras e garantir que as tendências visuais identificadas sejam representativas de imagens únicas.
 
@@ -129,6 +136,9 @@ Ao utilizar a remoção de duplicatas do Moodie, você garante uma base de dados
 ---
 
 ### 2.4 Análise de Cores e Geração de Paletas
+> **Objetivo**  
+> Mapear a distribuição cromática do corpus, agrupar cores em “zonas” perceptuais e gerar paletas temáticas / acessíveis que resumem a identidade visual do conjunto.
+
 
 Esta etapa do Moodie mergulha nas cores do seu conjunto de imagens para criar um mapa visual da distribuição de cores predominantes e sugerir paletas temáticas relevantes para o seu corpus.
 
@@ -194,6 +204,9 @@ Esses metadados podem ser valiosos para análises contextuais e para entender a 
 ---
 
 ### 2.5 Visualização do Corpus
+> **Objetivo**  
+> Construir “image‑walls” ordenadas (geral ou por grupos) que permitem inspeção visual rápida, revelando padrões, duplicidades e a coerência estética do dataset.
+
 
 Esta etapa do Moodie permite criar representações visuais do seu conjunto de imagens, facilitando a exploração e a identificação de padrões. Você pode gerar "paredes de imagens" (imagewalls) que organizam suas fotos em uma grade, com opções para filtrar, agrupar e exibir informações relevantes.
 
@@ -239,95 +252,137 @@ A visualização do corpus é um recurso de apoio para obter *insights* rápidos
 
 ---
 
-### 2.6 Moodie Trends: Sistema de Recomendação
+### 2.6 · Moodie Trends — Sistema de Recomendação
 
-Este módulo permite encontrar imagens similares e criar curadorias personalizadas.
+> **Objetivo**  
+> Encontrar imagens similares, montar curadorias e gerar painéis de cor usando combinações de **similaridade visual (embeddings)** e **metadados opcionais**.
 
-**1. Configuração Inicial:**
+---
 
-| Etapa                     | Descrição                                                                 | Ações do Usuário                                                                 |
-| ------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Seleção Coluna de Imagens | Indica qual coluna contém os nomes dos arquivos de imagem.                | Escolher a coluna correspondente no menu suspenso.                               |
-| Seleção Coluna Embedding  | Escolhe a coluna com os vetores de características visuais das imagens. | Selecionar a coluna de embeddings no menu suspenso.                             |
-| Seleção Métrica          | Define como a similaridade visual será calculada.                          | Escolher entre Cosseno, Euclidiana ou Correlação no menu suspenso.              |
-| Peso do Embedding         | Ajusta a importância das características visuais na busca.                 | Usar o slider para definir um peso (0.0 a 10.0).                                |
+![](dashboard_exemplo.png)
 
-**2. Métricas de Similaridade:**
 
-| Métrica     | Descrição                                                                                                | Quando Usar                                                                                                                               |
-| ----------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+#### 1. Configuração Inicial
+
+| Etapa                        | O que é                                                           | O que você faz na interface |
+|------------------------------|-------------------------------------------------------------------|-----------------------------|
+| **Coluna de Imagens**        | Nome do arquivo da imagem no *DataFrame*.                         | Escolha a coluna correta no menu. |
+| **Coluna de Embeddings**     | Vetores de características visuais (gerados no módulo anterior).  | Selecione a coluna de embeddings. |
+| **Métrica de Similaridade**  | Fórmula que mede a “distância” entre vetores (Coseno, Euclidiana, Correlação). | Selecione no menu. |
+| **Peso do Embedding**        | Quanto a semelhança visual pesa em relação aos metadados extras.  | Ajuste no *slider* (0 – 10). |
+
+---
+
+#### 2. Métricas de Similaridade (embeddings)
+
+#### 2. Métricas de Similaridade (embeddings)
+
+| Métrica      | Como calcula                                                                                                | Use quando…                                                                                                                               |
+|--------------|--------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | **Cosseno** | Mede a similaridade do ângulo entre os vetores, ignorando a magnitude.                                  | Para encontrar imagens com padrões visuais semelhantes (composição, elementos), independentemente de brilho ou contraste.                     |
 | **Euclidiana** | Calcula a distância geométrica entre os vetores. Menor distância indica maior similaridade.             | Para encontrar imagens que são globalmente mais próximas em termos de cores e texturas.                                                     |
 | **Correlação** | Mede a relação linear entre os vetores, focando em variações semelhantes nas características visuais. | Para encontrar imagens com mudanças de iluminação ou variações de cor semelhantes, ignorando os níveis absolutos das características. |
 
-**3. Colunas Extras (Opcional):**
+---
 
-| Recurso                | Descrição                                                                                              | Ações do Usuário                                                                                                                               |
-| ---------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Seleção de Colunas     | Escolha colunas adicionais de metadados para refinar a recomendação (numéricas ou de texto).          | Marcar as caixas de seleção ao lado das colunas desejadas.                                                                                       |
-| Ajuste de Pesos        | Defina a importância de cada coluna extra na recomendação.                                             | Usar sliders para definir pesos individuais para cada coluna selecionada.                                                                      |
-| Tipos de Similaridade  | Define como a similaridade será calculada para cada tipo de coluna extra.                             | O Moodie detecta automaticamente o tipo da coluna (numérica, texto, conjunto) e oferece opções de similaridade adequadas.                           |
-| - Numérica             | Calcula a diferença entre os valores. Permite definir uma diferença máxima para normalização.           | (Interno ao Moodie) Ajustar a "diferença máxima" se necessário.                                                                                    |
-| - Texto                | Compara a similaridade entre os textos.                                                              | (Interno ao Moodie)                                                                                                                              |
-| - Conjunto             | Compara a similaridade entre conjuntos de elementos (e.g., tags).                                      | (Interno ao Moodie)                                                                                                                              |
+#### 3. Colunas Extras (opcionais)
 
-**Passo B: Ajustar Agregador, Separador e Peso para Colunas Extras**
+Depois de marcar as colunas e clicar em **“Avançar para Ajustes”**, cada coluna aparece com três controles:
 
-Nesta etapa, você pode refinar como as colunas extras selecionadas serão usadas no cálculo de similaridade.
+1. **Agregador**  
+2. **Separador**  
+3. **Peso**
 
-* **Agregador:** Esta opção permite definir como lidar com múltiplos valores encontrados em uma única célula da coluna extra.
-    * **Para colunas numéricas:**
-        * `none`: Utiliza o valor numérico diretamente (se houver apenas um). Se houver múltiplos valores (separados pelo separador definido), o primeiro valor encontrado será usado.
-        * `mean`: Calcula a média de todos os valores numéricos encontrados na célula (após a divisão pelo separador).
-        * `median`: Calcula a mediana de todos os valores numéricos encontrados na célula.
-        * **Quando usar:** Use `mean` ou `median` se suas células contiverem múltiplos valores numéricos relevantes (por exemplo, faixas de preço, múltiplas medidas) e você quiser usar uma medida central para a comparação. Use `none` se cada célula contiver um único valor representativo ou se você quiser usar apenas o primeiro valor de múltiplos.
-    * **Para colunas de texto (com a opção de similaridade Jaccard):**
-        * `none`: Utiliza a string de texto diretamente para comparação exata.
-        * `jaccard`: Calcula a similaridade entre conjuntos de palavras ou termos presentes na célula de referência e na célula da imagem sendo comparada. Para isso, a string é dividida usando o separador definido. A similaridade de Jaccard é a razão entre o número de elementos em comum e o número total de elementos nos dois conjuntos.
-        * **Quando usar:** Use `jaccard` se suas colunas de texto contiverem múltiplos termos ou tags relevantes (por exemplo, estilos, materiais, palavras-chave) separados por um delimitador, e você quiser medir a sobreposição desses termos. Use `none` para uma comparação de texto exata.
+As três opções determinam **como** a coluna influencia o cálculo final de similaridade.
 
-* **Separador:** Defina o caractere ou a string usada para separar múltiplos valores dentro de uma mesma célula da coluna extra.
-    * **Para colunas numéricas:** Se uma célula contiver "10,20,30", você definiria "," como separador para que os valores 10, 20 e 30 sejam considerados para o cálculo da média ou mediana.
-    * **Para colunas de texto (com a opção Jaccard):** Se uma célula contiver "azul,vermelho,amarelo", você definiria "," como separador para que "azul", "vermelho" e "amarelo" sejam tratados como elementos separados para calcular a similaridade de Jaccard.
-    * **Quando usar:** Insira o caractere que delimita os múltiplos valores em suas células. Deixe em branco se cada célula contiver apenas um valor.
+##### 3.1 Agregadores disponíveis
 
-* **Peso:** Ajuste a importância desta coluna extra no cálculo geral de similaridade. Um peso maior fará com que essa característica tenha uma influência maior na ordenação dos resultados da recomendação.
+| Tipo de coluna | Agregador | Como funciona | Quando escolher |
+|----------------|-----------|---------------|-----------------|
+| **Numérica**   | `none`    | Usa o primeiro valor da célula. | Há só um valor (ex.: idade, preço único). |
+|                | `mean`    | Média dos valores separados pelo *separador*. | Há vários números e você quer a tendência geral. |
+|                | `median`  | Mediana dos valores separados.  | Deseja reduzir impacto de valores muito altos/baixos. |
+| **Texto / Conjunto** | `none` | Comparação literal de strings. | A célula traz um rótulo único (“masculino”, “Y2K”). |
+|                | `jaccard` | Similaridade de Jaccard entre **conjuntos de termos**. O valor varia de 0 (sem sobreposição) a 1 (todos os termos coincidem). | A célula contém **vários termos** (tags, estilos, cores) separados por vírgula ou outro delimitador. |
 
-Ao configurar o agregador, o separador e o peso de cada coluna extra, você pode personalizar o sistema de recomendação para priorizar as características mais relevantes para a sua análise.
+##### 3.2 Separador
 
+*Caractere que “quebra” a célula em pedaços antes do agregador ser aplicado.*
 
-**4. Busca por Similaridade:**
+| Exemplo de célula | Separador correto | Efeito |
+|-------------------|-------------------|--------|
+| `10,20,30`        | `,`               | Três números → média ou mediana. |
+| `azul;vermelho;verde` | `;`           | Três termos → Jaccard entre conjuntos de cores. |
+| `Branco`          | *(vazio)*         | Célula tratada como valor único. |
 
-| Etapa             | Descrição                                                                | Ações do Usuário                                                                 |
-| ----------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Modo de Referência | Define a origem da imagem de referência para a busca.                     | Escolher entre "Imagem interna do DF" ou "Upload imagem externa" no menu.        |
-| Imagem de Referência | Seleciona a imagem a ser usada como base para a busca.                  | Se interna: inserir o nome do arquivo. Se externa: fazer o upload do arquivo. |
-| Top N             | Define o número de imagens similares a serem retornadas.                 | Usar o slider para definir a quantidade desejada.                                |
-| Critério de Ordem | Define como as imagens similares serão ordenadas.                         | Escolher entre Relevância, Contraste ou Concordância no menu suspenso.          |
+##### 3.3 Peso
 
-**5. Critérios de Ordenação:**
-
-| Critério      | Descrição                                                                                                | Quando Usar                                                                                                                                                              |
-| ------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Relevância** | Ordena por similaridade decrescente, mostrando as imagens mais parecidas com a referência.               | Para encontrar as imagens que melhor correspondem à imagem de referência e aos critérios definidos.                                                                     |
-| **Contraste** | Ordena por similaridade crescente, mostrando as imagens menos parecidas com a referência.                | Para encontrar imagens que são visualmente distintas ou que podem complementar a imagem de referência. Útil para exploração de diversidade.                               |
-| **Concordância** | Ordena por similaridade com base na proximidade a um ponto médio de similaridade (nem muito similar, nem muito diferente). | Para encontrar imagens que são representativas do "meio" do seu corpus em relação à referência. Pode ser útil para identificar imagens típicas ou evitar extremos de similaridade. |
-
-**6. Resultados:**
-
-Após a configuração e a execução da busca, o Moodie Trends gerará:
-
-* **Mapas Perceptuais de Cores:** Visualizações da distribuição de cores (dominantes e representativas) nas imagens recomendadas.
-* **Paletas de Cores:** Paletas temáticas e acessíveis geradas a partir das cores das imagens recomendadas.
-* **Corpus de Imagens Similares:** Um conjunto contendo as Top N imagens consideradas similares.
-* **Síntese de Metadados:** Um resumo dos critérios e pesos utilizados na sua recomendação personalizada.
-
-Essas tabelas oferecem uma visão organizada do processo de configuração e das opções disponíveis no módulo Moodie Trends, facilitando a compreensão e o uso de seus recursos.
+Escala 0 – 10 que indica **quanto** a coluna extra entra no cálculo final comparado ao peso do embedding.
 
 ---
 
+#### 4. Busca por Similaridade
 
-<p align="left">
-  Feito no Datalab/Design · UNEB — 2025<br/>
-  Uso acadêmico não‑comercial · ver arquivo <strong>LICENSE</strong>
-</p>
+| Passo                     | O que define                                | Na prática |
+|---------------------------|---------------------------------------------|------------|
+| **Modo de Referência**    | Fonte da imagem‑exemplo.                    | *Imagem interna* ou *Upload externo*. |
+| **Imagem de Referência**  | Arquivo usado como “query”.                 | Digitar nome (interna) ‑‑ ou ‑‑ fazer upload. |
+| **Top N**                 | Quantidade de imagens retornadas.           | Ajustar *slider*. |
+| **Critério de Ordem**     | Como ranquear o Top N (Relevância, Contraste, Concordância). | Escolher no menu. |
+
+##### Como o Moodie lida com **imagens externas**
+
+1. A imagem é carregada e recebe **o mesmo modelo de embedding** escolhido.  
+2. Calcula‑se a semelhança desse vetor contra **todas** as imagens internas.  
+3. A mais parecida vira a “ponte” (referência interna).  
+4. Todo o restante do algoritmo roda exatamente como se a referência fosse interna.
+
+Assim o usuário pode consultar qualquer foto (ex.: do Pinterest) e receber recomendações dentro do seu próprio corpus.
+
+---
+
+#### 5. Critérios de Ordenação
+
+| Critério        | Lógica de pontuação | Resultado típico |
+|-----------------|---------------------|------------------|
+| **Relevância**  | Score = similaridade (1 → 0).           | “Mais parecidas” primeiro. |
+| **Contraste**   | Score = 1 − similaridade.               | “Mais diferentes” primeiro (busca diversidade). |
+| **Concordância**| Score = 1 − 2·|sim − 0 .5|.            | Imagens que ficam num “meio‑termo” entre iguais e diferentes. |
+
+---
+
+#### 6. Saídas Geradas
+
+- **CSV completo & resumido** com scores e metadados.  
+- **Image‑wall** das Top N (ordem do ranking).  
+- **Dashboards de cor** (dominante e representativa) + **paletas acessíveis**.  
+- **ZIP** contendo imagens recomendadas, relatórios e dashboards para download rápido.
+
+Esses artefatos permitem que alunos e pesquisadores avaliem rapidamente **similaridade, diversidade e composição cromática** das recomendações.
+
+---
+
+## Sobre o Autor
+
+**Elias Bitencourt** é Professor Adjunto no Curso de Design da Universidade do Estado da Bahia (UNEB), com Doutorado em Comunicação pela FACOM/UFBA e Mestrado em Cultura e Sociedade pelo IHAC/UFBA. Foi pesquisador visitante no Centro Milieux (Concordia University, Canadá) em 2019. Atualmente, coordena o **Datalab/Design (CNPq)** na UNEB, um centro de pesquisa em visualização de dados e metodologias digitais. Sua pesquisa investiga visualização de dados, estudos de plataformas, imaginários digitais e mediação algorítmica nas relações sociais. É pesquisador colaborador no **Inova Media Lab** (Universidade Nova de Lisboa) e na rede internacional **Public Data Lab**. [Mais em](https://eliasbitencourt.com)
+
+---
+
+## Status
+
+O projeto encontra-se em **fase beta** e está em desenvolvimento contínuo. Contribuições, sugestões e colaborações são bem-vindas.
+
+---
+
+## Licença
+
+Este repositório está sob uma **Licença de Uso Restrito com Atribuição**.  
+O conteúdo pode ser utilizado para fins acadêmicos e não-comerciais com devida atribuição ao autor.  
+Modificações ou redistribuição exigem permissão.  
+Veja o arquivo [`LICENSE.txt`](./LICENSE.txt) para mais detalhes.
+
+## Como citar este repositório (formato APA):
+
+Bitencourt, E. (2025). *MOODIE: Modular Observational & Operational Design Image Explorer* (Versão beta) [Repositório GitHub]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
+
+
