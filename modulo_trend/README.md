@@ -358,7 +358,7 @@ Assim o usuário pode consultar qualquer foto (ex.: do Pinterest) e receber reco
 - **Dashboards de cor** (dominante e representativa) + **paletas acessíveis**.  
 - **ZIP** contendo imagens recomendadas, relatórios e dashboards para download rápido.
 
-Esses artefatos permitem que alunos e pesquisadores avaliem rapidamente **similaridade, diversidade e composição cromática** das recomendações.
+Esses recursos permitem que alunos e pesquisadores avaliem rapidamente **similaridade, diversidade e composição cromática** das recomendações.
 
 ---
 
@@ -381,8 +381,8 @@ O conteúdo pode ser utilizado para fins acadêmicos e não-comerciais com devid
 Modificações ou redistribuição exigem permissão.  
 Veja o arquivo [`LICENSE.txt`](./LICENSE.txt) para mais detalhes.
 
-## Como citar este repositório (formato APA):
+## Como citar moodie (formato APA):
 
-Bitencourt, E. (2025). *MOODIE: Modular Observational & Operational Design Image Explorer* (Versão beta) [Repositório GitHub]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
+Bitencourt, E. (2025). *MOODIE Image Trends: Modular Observational & Operational Design Image Explorer* (Versão beta) [Repositório GitHub]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
 
 
