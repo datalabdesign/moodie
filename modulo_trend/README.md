@@ -2,7 +2,7 @@
   <img src="LOGO_MOODIE.png" alt="Logo MOODIE Image Trends" width="320"/>
 </p>
 
-# MOODIE Image Trends &nbsp;·&nbsp; guia passo‑a‑passo
+# MOODIE Image Trends &nbsp;·&nbsp; Múdulo de análise de tendências
 > **Uma trilha de aprendizado visual para quem ainda não programa.**
 
 MOODIE Image Trends é um _notebook_ que transforma **uma coleção de imagens** num
@@ -17,7 +17,40 @@ conjunto de **painéis, paletas e recomendações** prontas para análise de ten
 
 Inicialmente concebido como ferramenta pedagógica para as disciplinas de Introdução aos métodos digitais aplicados ao design e visualização de dados do curso de design da UNEB, o objetivo é permitir que estudantes de Design explorem de forma prática processos de exploração em Moda, editorial, UX Research e metodologia projetual, integrando conceitos de machine learning, vetores e modelos de visão computacional, sem a necessidade de codificação. Pesquisadores interessados em mapear padrões visuais ou detectar tendências em grandes acervos também encontrarão nele um ponto de partida para análises mais aprofundadas.
 
+[![Abrir no Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_trends/02_MOODIE_TREND_BETA_V5.ipynb)
+
 ---
+
+## ✦ Funcionalidades principais
+
+- **Amostragem inteligente**  
+  - *Downsample, Upsample* ou amostra aleatória, mesmo quando não há CSV.
+- **Extração de *features* visuais**  
+  - Modelos pré‑treinados **VGG16, ResNet50, MobileNetV2, InceptionV3**.
+- **Remoção de duplicatas**  
+  - Combina **hash MD5, pHash** e análise de **embeddings**.
+- **Mapas perceptuais & paletas**  
+  - Agrupamento cromático em LAB → paletas *Colorido, Brilho, Suave, Profundo, Escuro* e **Acessível** (simulação de daltonismo protano‑/deuterano‑/tritanopia).
+- **Image‑walls**  
+  - Mosaicos ordenados por similaridade, cor dominante, ranking ou representatividade.
+- **Sistema de recomendação**  
+  - Busca Top N por **Cosseno, Euclidiana ou Correlação**, com pesos ajustáveis para embeddings e colunas extras (média, mediana, Jaccard).  
+  - Aceita **imagem interna** ou **upload externo** como referência.
+- **Dashboards automáticos**  
+  - Resumo visual (referência + wall + mapas de cor) pronto para apresentação.  
+- **Exportação ZIP**  
+  - Todos os painéis, CSVs e imagens recomendadas em um clique.
+
+---
+
+## ✦ Requisitos rápidos
+
+Este módulo roda direto no **Google Colab** — nenhuma instalação local necessária.  
+Bibliotecas extras são instaladas automaticamente pelo notebook ( `tensorflow`, `distinctipy`, `umap-learn`, etc.).
+
+- Python ≥ 3.9 (padrão Colab)  
+- `pandas`, `numpy`, `Pillow`, `ipywidgets`, `scipy`, `scikit‑learn`  
+- GPU opcional em Colab para acelerar a extração de *features*
 
 ## O que você precisa
 
