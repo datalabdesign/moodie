@@ -1,0 +1,24 @@
+=== Relatório de Recomendação ===
+Versão: 9
+Referência: bcb1936cc936ccc2.jpg
+Embedding: MobileNetV2_features | Métrica: cosine
+Critério: relevancia | Top-N: 15
+Score => min=0.7686, max=0.8188, mean=0.7844
+
+=== Dataset Resumido (Top N) ===
+      image_name_new    score   criterio
+afe1d20f35604697.jpg 0.818790 relevancia
+b3cdcc31c66398c6.jpg 0.809196 relevancia
+b39cce31986661ce.jpg 0.804786 relevancia
+e4119b66999ccec3.jpg 0.796094 relevancia
+b1c6cf3966609a2d.jpg 0.790220 relevancia
+e69a9b619acc9932.jpg 0.782250 relevancia
+e699996699cc6331.jpg 0.781743 relevancia
+bc90c94f954a8f39.jpg 0.780490 relevancia
+e699cc6599cc4c33.jpg 0.779490 relevancia
+bc9b9331c7380ec6.jpg 0.771968 relevancia
+f8d2852d5ae630da.jpg 0.771591 relevancia
+eec1913e63951c63.jpg 0.771477 relevancia
+b3cccc33c79a30cc.jpg 0.769476 relevancia
+bce0c31f38708fc6.jpg 0.769212 relevancia
+a699d966312e6699.jpg 0.768592 relevancia

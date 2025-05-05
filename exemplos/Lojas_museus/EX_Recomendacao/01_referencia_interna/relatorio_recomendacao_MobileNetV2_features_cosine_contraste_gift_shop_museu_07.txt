@@ -1,0 +1,24 @@
+=== Relatório de Recomendação ===
+Versão: 7
+Referência: 9a6c6133cccf38cc.jpg
+Embedding: MobileNetV2_features | Métrica: cosine
+Critério: contraste | Top-N: 15
+Score => min=0.3952, max=0.4171, mean=0.4016
+
+=== Dataset Resumido (Top N) ===
+      image_name_new    score  criterio
+ea3a938785c5ac3c.jpg 0.417105 contraste
+f9a3f18183d7062e.jpg 0.411440 contraste
+bbe37112a7788615.jpg 0.410444 contraste
+bf313432b23bd309.jpg 0.403710 contraste
+ea9bb42dc2549f82.jpg 0.402738 contraste
+fa96611a87799661.jpg 0.400992 contraste
+ea9ca56db460972c.jpg 0.400272 contraste
+eac1c13fb43695c1.jpg 0.399326 contraste
+ada3d24d8f306c63.jpg 0.398609 contraste
+bfcc616499669992.jpg 0.397642 contraste
+f892c76c38b36790.jpg 0.397565 contraste
+8a626e2f4e658aba.jpg 0.396946 contraste
+839f90c64a4a9f7a.jpg 0.396865 contraste
+ed61b41cdac78712.jpg 0.395876 contraste
+fa658199c7c29e19.jpg 0.395196 contraste

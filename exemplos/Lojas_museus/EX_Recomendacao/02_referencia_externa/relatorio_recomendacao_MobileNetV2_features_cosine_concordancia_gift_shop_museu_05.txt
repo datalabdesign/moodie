@@ -1,0 +1,24 @@
+=== Relatório de Recomendação ===
+Versão: 5
+Referência: bcb1936cc936ccc2.jpg
+Embedding: MobileNetV2_features | Métrica: cosine
+Critério: concordancia | Top-N: 15
+Score => min=0.8161, max=0.8756, mean=0.8317
+
+=== Dataset Resumido (Top N) ===
+      image_name_new    score     criterio
+f9a3f18183d7062e.jpg 0.875592 concordancia
+a8507100f74cf6bf.jpg 0.851401 concordancia
+bb90c42e3b936ee0.jpg 0.849256 concordancia
+bfc1d0364ac13d69.jpg 0.837870 concordancia
+be2ee0c0959f616a.jpg 0.831866 concordancia
+bd03d0f8c70f0f70.jpg 0.831483 concordancia
+e199968686cf989e.jpg 0.829174 concordancia
+bd60cf239e833836.jpg 0.827882 concordancia
+839f90c64a4a9f7a.jpg 0.824187 concordancia
+eac1c13fb43695c1.jpg 0.823919 concordancia
+e69b9965b20dc992.jpg 0.823776 concordancia
+be5a80a18717d66e.jpg 0.818938 concordancia
+e91a96e195a59e0e.jpg 0.817350 concordancia
+c111faf774d818b2.jpg 0.817203 concordancia
+946c32d3cf1e20b7.jpg 0.816090 concordancia
