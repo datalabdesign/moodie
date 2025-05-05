@@ -193,68 +193,141 @@ Esses metadados podem ser valiosos para análises contextuais e para entender a 
 
 ---
 
-## 🖼️ 5. Image‑Walls
+### 2.5 Visualização do Corpus
 
-| O que você escolhe | O que o notebook faz | Arquivo gerado |
-|--------------------|----------------------|----------------|
-|**Top N Relevantes**|Pega as imagens mais parecidas com algo (embedding) e faz o mosaico|`imagewall/IW_Geral_rep_top_N.jpg`|
-|**Ranking** (likes, preço…)|Ordena pela coluna escolhida e mostra só as primeiras|`…ranking_MIN_PRICE_top_10.jpg`|
-|**Cor dominante**|Ordena da foto mais escura para a mais clara (ou vice‑versa)|`…colordom_top_50.jpg`|
+Esta etapa do Moodie permite criar representações visuais do seu conjunto de imagens, facilitando a exploração e a identificação de padrões. Você pode gerar "paredes de imagens" (imagewalls) que organizam suas fotos em uma grade, com opções para filtrar, agrupar e exibir informações relevantes.
 
-Rodapés mostram a **paleta resumida** da parede.
+![](exemplo_image_wall.jpg)
 
----
+**O que você pode fazer?**
 
-## 🤖 6. Recomendador (o “coração” do Trends)
+* **Visualização Geral:** Criar uma visão geral de todas as imagens do seu corpus em uma única grade.
+* **Agrupamento Visual:** Organizar as imagens em paredes separadas com base em categorias ou características específicas (por exemplo, por cor dominante, por similaridade visual - se você executou a etapa de clusterização).
+* **Filtragem:** Exibir apenas um subconjunto das imagens com base em critérios como representatividade (as imagens mais típicas de um grupo), ranking (se você tiver dados de classificação associados às imagens) ou cor dominante.
+* **Exibição de Paletas de Cores:** Incluir automaticamente a paleta de cores dominante de cada grupo de imagens diretamente na parede visual.
+* **Eliminação de Duplicatas (Opcional):** Antes de gerar as visualizações, você pode optar por remover imagens duplicadas ou muito semelhantes para obter uma representação mais limpa do seu corpus único.
 
-1. **Escolha a imagem‑referência**  
-   * interna (nome do CSV) **ou** upload externo.
-2. **Selecione o embedding** e **pese** sua importância.  
-3. **Adicione colunas extras** (ex.: “estação”, “preço”):  
-   * numéricas ➜ média, mediana …  
-   * texto ➜ Jaccard (semelhança de listas).  
-4. **Critério de ordenação**  
-   * _Relevância_ = os mais parecidos.  
-   * _Contraste_  = os mais diferentes.  
-   * _Concordância_ = meio‑termo (nem tão iguais, nem tão opostos).
+**Como funciona?**
 
-No final você baixa **um ZIP** com:
+1.  **Seleção da Coluna de Imagens:** Primeiro, você informa ao Moodie qual coluna da sua tabela de dados contém os nomes dos arquivos de imagem.
+2.  **Opções de Agrupamento (Opcional):** Se desejar, você pode escolher uma coluna para agrupar suas imagens. O Moodie criará uma parede de imagens separada para cada grupo único nessa coluna. Por exemplo, se você tiver uma coluna "Estilo", poderá visualizar uma parede para cada estilo diferente.
+3.  **Opções de Filtragem (Opcional):**
+    * **Nenhum:** Exibe todas as imagens (após a remoção de duplicatas, se selecionado).
+    * **Representatividade:** Para cada grupo (ou para todo o corpus, se não houver agrupamento), o Moodie identifica as imagens que são mais representativas visualmente, com base nas características extraídas anteriormente. Você pode definir quantas imagens "Top N" deseja visualizar por grupo.
+    * **Ranking:** Se você tiver uma coluna com valores de ranking (por exemplo, pontuações de popularidade), pode usar essa opção para exibir as imagens com os maiores ou menores rankings (Top N). Você precisa selecionar a coluna de ranking e a ordem (crescente ou decrescente).
+    * **Cor Dominante:** Permite exibir as imagens com as cores dominantes mais claras ou mais escuras (Top N), com base na coluna de cor dominante extraída na etapa anterior.
+4.  **Tamanho dos Miniaturas:** Você pode definir a largura e a altura desejadas para as miniaturas das imagens na parede visual. O Moodie ajustará automaticamente o layout para acomodar o número de imagens.
+5.  **Recorte (Opcional):** A opção "Crop (Quadrado)" instrui o Moodie a recortar as imagens para um formato quadrado antes de redimensioná-las para as miniaturas, garantindo uma grade visualmente uniforme.
+6.  **Paletas de Cores (Opcional):** Você pode escolher se deseja incluir uma faixa com a cor dominante e uma pequena paleta de cores representativas abaixo de cada parede de imagens (para a visualização geral e/ou para cada grupo).
+7.  **Eliminação de Duplicatas (Opcional):** Ao marcar essa caixa, o Moodie realizará uma verificação para remover imagens que são cópias exatas, quase idênticas (visualmente muito semelhantes) ou muito próximas em termos de suas características visuais (embeddings). **Se você já executou a etapa de remoção de duplicatas anteriormente, não é necessário marcar esta opção novamente.**
 
-```
-imagewall_topN.png
-dashboard_dom.png
-dashboard_rep.png
-dashboard_resumo.png  ← tudo em uma página
-dataset/recomendacoes_full.csv
-```
+**Como o Moodie lida com a eliminação de duplicatas?**
 
----
+Se você optar por eliminar duplicatas, o Moodie aplica uma série de verificações:
 
-## 🏃‍♀️ 7. Passo‑a‑passo rápido (TL;DR)
+1.  **Duplicatas Exatas (Hash MD5):** Ele compara um "código" único gerado a partir do conteúdo de cada arquivo. Se os códigos forem idênticos, os arquivos são considerados cópias exatas.
+2.  **Duplicatas Quase Iguais (pHash):** Ele usa um algoritmo chamado "perceptual hash" (pHash) que cria uma "impressão digital" visual da imagem. Imagens com pHashes muito semelhantes (uma diferença de até 4 bits) são consideradas cópias quase idênticas.
+3.  **Duplicatas por Características Visuais (Opcional):** Se você já extraiu as características visuais das imagens, o Moodie pode comparar esses "códigos visuais". Imagens com códigos muito próximos (uma similaridade de cosseno muito alta) são consideradas visualmente muito semelhantes.
 
-```text
-1. Carregue seu CSV + imagens
-2. Rode ► “Amostragem”        (opcional)
-3. Rode ► “Extração de Features”
-4. Rode ► “Remoção de Duplicatas”
-5. Rode ► “Mapas & Paletas”   (apenas clicar)
-6. Rode ► “Image‑Walls”
-7. Rode ► “Recomendação”
-```
+O Moodie mantém a primeira imagem encontrada de cada grupo de duplicatas e remove as demais antes de gerar as paredes visuais. Um resumo do número de duplicatas removidas por cada método é exibido.
 
-Cada botão gera **links de download** direto no Colab.
+**Resultado:**
+
+Ao final do processo, o Moodie gerará uma ou mais imagens (arquivos `.jpg`) contendo as paredes visuais do seu corpus (geral e/ou por grupos), salvas em uma pasta chamada `imagewall` dentro do seu `project_dir`. Se você optou por incluir paletas de cores, elas serão exibidas abaixo de cada parede. Você poderá visualizar essas imagens diretamente no seu ambiente de análise.
+
+A visualização do corpus é um recurso de apoio para obter *insights* rápidos sobre o conteúdo visual da sua coleção de imagens, identificar padrões e comunicar suas descobertas de forma visualmente rica.
 
 ---
 
-## 📚 Para saber mais
+### 2.6 Moodie Trends: Sistema de Recomendação
 
-* Simonyan, K. & Zisserman, A. (2014). _Very Deep Convolutional Networks…_  
-* He, K. et al. (2015). _Deep Residual Learning…_  
-* Brettel, H. et al. (1997). _Computerized simulation of color blindness…_
+Este módulo permite encontrar imagens similares e criar curadorias personalizadas.
+
+**1. Configuração Inicial:**
+
+| Etapa                     | Descrição                                                                 | Ações do Usuário                                                                 |
+| ------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Seleção Coluna de Imagens | Indica qual coluna contém os nomes dos arquivos de imagem.                | Escolher a coluna correspondente no menu suspenso.                               |
+| Seleção Coluna Embedding  | Escolhe a coluna com os vetores de características visuais das imagens. | Selecionar a coluna de embeddings no menu suspenso.                             |
+| Seleção Métrica          | Define como a similaridade visual será calculada.                          | Escolher entre Cosseno, Euclidiana ou Correlação no menu suspenso.              |
+| Peso do Embedding         | Ajusta a importância das características visuais na busca.                 | Usar o slider para definir um peso (0.0 a 10.0).                                |
+
+**2. Métricas de Similaridade:**
+
+| Métrica     | Descrição                                                                                                | Quando Usar                                                                                                                               |
+| ----------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Cosseno** | Mede a similaridade do ângulo entre os vetores, ignorando a magnitude.                                  | Para encontrar imagens com padrões visuais semelhantes (composição, elementos), independentemente de brilho ou contraste.                     |
+| **Euclidiana** | Calcula a distância geométrica entre os vetores. Menor distância indica maior similaridade.             | Para encontrar imagens que são globalmente mais próximas em termos de cores e texturas.                                                     |
+| **Correlação** | Mede a relação linear entre os vetores, focando em variações semelhantes nas características visuais. | Para encontrar imagens com mudanças de iluminação ou variações de cor semelhantes, ignorando os níveis absolutos das características. |
+
+**3. Colunas Extras (Opcional):**
+
+| Recurso                | Descrição                                                                                              | Ações do Usuário                                                                                                                               |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Seleção de Colunas     | Escolha colunas adicionais de metadados para refinar a recomendação (numéricas ou de texto).          | Marcar as caixas de seleção ao lado das colunas desejadas.                                                                                       |
+| Ajuste de Pesos        | Defina a importância de cada coluna extra na recomendação.                                             | Usar sliders para definir pesos individuais para cada coluna selecionada.                                                                      |
+| Tipos de Similaridade  | Define como a similaridade será calculada para cada tipo de coluna extra.                             | O Moodie detecta automaticamente o tipo da coluna (numérica, texto, conjunto) e oferece opções de similaridade adequadas.                           |
+| - Numérica             | Calcula a diferença entre os valores. Permite definir uma diferença máxima para normalização.           | (Interno ao Moodie) Ajustar a "diferença máxima" se necessário.                                                                                    |
+| - Texto                | Compara a similaridade entre os textos.                                                              | (Interno ao Moodie)                                                                                                                              |
+| - Conjunto             | Compara a similaridade entre conjuntos de elementos (e.g., tags).                                      | (Interno ao Moodie)                                                                                                                              |
+
+**Passo B: Ajustar Agregador, Separador e Peso para Colunas Extras**
+
+Nesta etapa, você pode refinar como as colunas extras selecionadas serão usadas no cálculo de similaridade.
+
+* **Agregador:** Esta opção permite definir como lidar com múltiplos valores encontrados em uma única célula da coluna extra.
+    * **Para colunas numéricas:**
+        * `none`: Utiliza o valor numérico diretamente (se houver apenas um). Se houver múltiplos valores (separados pelo separador definido), o primeiro valor encontrado será usado.
+        * `mean`: Calcula a média de todos os valores numéricos encontrados na célula (após a divisão pelo separador).
+        * `median`: Calcula a mediana de todos os valores numéricos encontrados na célula.
+        * **Quando usar:** Use `mean` ou `median` se suas células contiverem múltiplos valores numéricos relevantes (por exemplo, faixas de preço, múltiplas medidas) e você quiser usar uma medida central para a comparação. Use `none` se cada célula contiver um único valor representativo ou se você quiser usar apenas o primeiro valor de múltiplos.
+    * **Para colunas de texto (com a opção de similaridade Jaccard):**
+        * `none`: Utiliza a string de texto diretamente para comparação exata.
+        * `jaccard`: Calcula a similaridade entre conjuntos de palavras ou termos presentes na célula de referência e na célula da imagem sendo comparada. Para isso, a string é dividida usando o separador definido. A similaridade de Jaccard é a razão entre o número de elementos em comum e o número total de elementos nos dois conjuntos.
+        * **Quando usar:** Use `jaccard` se suas colunas de texto contiverem múltiplos termos ou tags relevantes (por exemplo, estilos, materiais, palavras-chave) separados por um delimitador, e você quiser medir a sobreposição desses termos. Use `none` para uma comparação de texto exata.
+
+* **Separador:** Defina o caractere ou a string usada para separar múltiplos valores dentro de uma mesma célula da coluna extra.
+    * **Para colunas numéricas:** Se uma célula contiver "10,20,30", você definiria "," como separador para que os valores 10, 20 e 30 sejam considerados para o cálculo da média ou mediana.
+    * **Para colunas de texto (com a opção Jaccard):** Se uma célula contiver "azul,vermelho,amarelo", você definiria "," como separador para que "azul", "vermelho" e "amarelo" sejam tratados como elementos separados para calcular a similaridade de Jaccard.
+    * **Quando usar:** Insira o caractere que delimita os múltiplos valores em suas células. Deixe em branco se cada célula contiver apenas um valor.
+
+* **Peso:** Ajuste a importância desta coluna extra no cálculo geral de similaridade. Um peso maior fará com que essa característica tenha uma influência maior na ordenação dos resultados da recomendação.
+
+Ao configurar o agregador, o separador e o peso de cada coluna extra, você pode personalizar o sistema de recomendação para priorizar as características mais relevantes para a sua análise.
+
+
+**4. Busca por Similaridade:**
+
+| Etapa             | Descrição                                                                | Ações do Usuário                                                                 |
+| ----------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Modo de Referência | Define a origem da imagem de referência para a busca.                     | Escolher entre "Imagem interna do DF" ou "Upload imagem externa" no menu.        |
+| Imagem de Referência | Seleciona a imagem a ser usada como base para a busca.                  | Se interna: inserir o nome do arquivo. Se externa: fazer o upload do arquivo. |
+| Top N             | Define o número de imagens similares a serem retornadas.                 | Usar o slider para definir a quantidade desejada.                                |
+| Critério de Ordem | Define como as imagens similares serão ordenadas.                         | Escolher entre Relevância, Contraste ou Concordância no menu suspenso.          |
+
+**5. Critérios de Ordenação:**
+
+| Critério      | Descrição                                                                                                | Quando Usar                                                                                                                                                              |
+| ------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Relevância** | Ordena por similaridade decrescente, mostrando as imagens mais parecidas com a referência.               | Para encontrar as imagens que melhor correspondem à imagem de referência e aos critérios definidos.                                                                     |
+| **Contraste** | Ordena por similaridade crescente, mostrando as imagens menos parecidas com a referência.                | Para encontrar imagens que são visualmente distintas ou que podem complementar a imagem de referência. Útil para exploração de diversidade.                               |
+| **Concordância** | Ordena por similaridade com base na proximidade a um ponto médio de similaridade (nem muito similar, nem muito diferente). | Para encontrar imagens que são representativas do "meio" do seu corpus em relação à referência. Pode ser útil para identificar imagens típicas ou evitar extremos de similaridade. |
+
+**6. Resultados:**
+
+Após a configuração e a execução da busca, o Moodie Trends gerará:
+
+* **Mapas Perceptuais de Cores:** Visualizações da distribuição de cores (dominantes e representativas) nas imagens recomendadas.
+* **Paletas de Cores:** Paletas temáticas e acessíveis geradas a partir das cores das imagens recomendadas.
+* **Corpus de Imagens Similares:** Um conjunto contendo as Top N imagens consideradas similares.
+* **Síntese de Metadados:** Um resumo dos critérios e pesos utilizados na sua recomendação personalizada.
+
+Essas tabelas oferecem uma visão organizada do processo de configuração e das opções disponíveis no módulo Moodie Trends, facilitando a compreensão e o uso de seus recursos.
 
 ---
 
-<p align="center">
+
+<p align="left">
   Feito no Datalab/Design · UNEB — 2025<br/>
   Uso acadêmico não‑comercial · ver arquivo <strong>LICENSE</strong>
 </p>
