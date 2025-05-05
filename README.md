@@ -2,9 +2,7 @@
 
 # MOODIE
 
-**MOODIE Vision Design** (Modular Observational & Operational Design Image Explorer) é uma ferramenta experimental em fase beta voltada à exploração visual e análise de imagens para fins pedagógicos e criativos. Organizado em três módulos independentes — *Grabber*, *Metadata* e *Trends* — o MOODIE foi desenvolvido para aproximar designers de métodos digitais e ferramentas computacionais, estimulando novas formas de pesquisa visual, mapeamento de tendências e montagem de moodboards.
-
-Atualmente, apenas o módulo **Download** está disponível para uso. Os demais módulos encontram-se em desenvolvimento.
+**MOODIE Vision Design** (Modular Observational & Operational Design Image Explorer) é uma ferramenta experimental em fase beta voltada à exploração visual e análise de imagens para fins pedagógicos e criativos. Organizado em dois módulos independentes — *Grabber* e *Trends* — o MOODIE foi desenvolvido para aproximar designers de métodos digitais e ferramentas computacionais, estimulando novas formas de pesquisa visual, mapeamento de tendências e montagem de moodboards.
 
 ---
 
@@ -25,7 +23,7 @@ Permite baixar imagens a partir de uma coluna com links em um arquivo CSV. Entre
   - Tamanho e formato da imagem;
 - Geração de um **dataset com os metadados** coletados.
 
-### 2. Módulo `metadata` (em desenvolvimento)
+### 2. Módulo `trends` 
 Permite análise e extração de metadados a partir de uma pasta ou arquivo `.zip` contendo imagens, sem a necessidade de um CSV. Funcionalidades previstas:
 
 - Renomear imagens com hash hexadecimal ou pHash;
@@ -33,7 +31,6 @@ Permite análise e extração de metadados a partir de uma pasta ou arquivo `.zi
 - Gerar paletas de cores dominantes e representativas para cada imagem, salvas como `.png`;
 - Exportar um dataset com os dados extraídos, para uso posterior no módulo Trends.
 
-### 3. Módulo `trends` (em desenvolvimento)
 Recebe como entrada uma pasta de imagens e o dataset gerado por um dos módulos anteriores. Este módulo permitirá:
 
 - Enriquecimento dos dados com:
