@@ -11,7 +11,7 @@ Atualmente, apenas o módulo **Download** está disponível para uso. Os demais 
 ## ✦ Módulos da Ferramenta
 
 ### 1. Módulo `Image Grabber` 
-[![Abrir no Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_grabber/01_MOODIE_GRABBER_v1_BETA.ipynb)
+[![Abrir no Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_trend/02_MOODIE_TREND_BETA_V5.ipynb)
 
 Permite baixar imagens a partir de uma coluna com links em um arquivo CSV. Entre as funcionalidades disponíveis:
 
