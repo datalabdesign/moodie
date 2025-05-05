@@ -138,7 +138,7 @@ Imagine um mapa onde cada ponto representa uma cor presente no seu conjunto de i
 
 **Exemplo Visual:**
 
-[Inclua aqui o link para a imagem do mapa perceptual. Exemplo: `![](./caminho/para/sua/imagem_mapa_perceptual.png)`]
+![](color_map.png)
 
 *Este mapa mostra como as cores estão distribuídas no seu conjunto de imagens. Áreas com cores vibrantes indicam uma maior ocorrência dessas tonalidades.*
 
