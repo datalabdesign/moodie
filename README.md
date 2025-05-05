@@ -1,5 +1,5 @@
-<p align="center">
-  <img src="LOGO_MOODIE.png" alt="Logo MOODIE" width="380"/>
+<p align="left">
+  <img src="logo_moodies.png" alt="Logo MOODIE" width="380"/>
 </p>
 
 # MOODIE · Modular Observational & Operational Design Image Explorer  
