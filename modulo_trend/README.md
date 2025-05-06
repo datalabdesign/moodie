@@ -137,6 +137,8 @@ Ao final dessa etapa, suas imagens estarão representadas numericamente, prontas
 
 Depois de extrair as características visuais das suas imagens, o Moodie pode identificar e remover automaticamente imagens duplicadas ou muito semelhantes em sua coleção. Isso é útil para limpar seu dataset, evitar redundâncias nas análises futuras e garantir que as tendências visuais identificadas sejam representativas de imagens únicas.
 
+![](exemplo_duplicatas.png)
+
 **Como o Moodie identifica duplicatas?**
 
 O Moodie utiliza três métodos inteligentes para encontrar duplicatas, verificando diferentes níveis de semelhança:
