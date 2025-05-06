@@ -1,6 +1,4 @@
-<p align="left">
-  <img src="LOGO_MOODIE_TREND.png" alt="Logo MOODIE TREND" width="320"/>
-</p>
+<img src="logo_moodie_trend.png" alt="Logo MOODIE TREND" width="350"/>
 
 # MOODIE Image Trends &nbsp;·&nbsp; Múdulo de análise de tendências
 > **Uma trilha de aprendizado visual para quem ainda não programa.**
