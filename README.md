@@ -1,6 +1,4 @@
-<p align="left">
-  <img src="LOGO_MOODIES.png" alt="LOGO_MOODIES" width="600"/>
-</p>
+<img src="logo_moodie_all.png" alt="Logo MOODIE ALL" width="600"/>
 
 # MOODIE · Modular Observational & Operational Design Image Explorer  
 > **Ferramenta open‑source (beta) para coleta, exploração e análise visual de grandes acervos de imagens — sem precisar programar.**
