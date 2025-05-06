@@ -1,5 +1,5 @@
 <p align="left">
-  <img src="LOGO_MOODIE.png" alt="Logo MOODIE" width="320"/>
+  <img src="LOGO_MOODIE_TREND.png" alt="Logo MOODIE TREND" width="320"/>
 </p>
 
 # MOODIE Image Trends &nbsp;·&nbsp; Múdulo de análise de tendências
