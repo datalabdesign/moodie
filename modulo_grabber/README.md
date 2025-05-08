@@ -9,6 +9,13 @@ Este módulo foi pensado como uma introdução prática ao uso de imagens em pip
 [![Abrir no Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_grabber/01_MOODIE_GRABBER_v1_BETA.ipynb)
 
 
+## ✦ Atualizações (08 / 05 / 2025)
+
+* **Compatibilidade total com JSON**  
+  O módulo identifica automaticamente a estrutura de listas em JSON, “achata” chaves aninhadas e converte em CSV antes da análise — perfeito para APIs que retornam grandes coleções de itens.
+
+* **Download paralelo de imagens (+ retry/back-off)**  
+  Agora as imagens são baixadas com até 10 threads simultâneas, com cabeçalhos *User-Agent* aleatórios e política de re-tentativa (códigos 429/5xx), acelerando o processo e reduzindo bloqueios por servidor.
 
 ---
 
@@ -16,13 +23,14 @@ Este módulo foi pensado como uma introdução prática ao uso de imagens em pip
 
 O MOODIE Grabber permite:
 
-- Leitura de um **CSV contendo links de imagens** (campo configurável);
+- **Leitura de CSV ou JSON** contendo links de imagens (campo configurável);
 - **Sampleamento estatístico** do dataset completo:
   - Amostragem proporcional, aleatória, por classe ou por tamanho (upsample/downsample);
-- **Remoção de duplicatas com base na seleção de colunas específicas**
-- **Download automático das imagens**, com:
-  - Opção de nomeação: nome original, hash hexadecimal, ou hash perceptual;
-- **Extração automática de metadados básicos**:
+- **Remoção de duplicatas** com base na seleção de colunas específicas;
+- **Download automático de imagens em paralelo**, com:
+  - Política de retry/back-off integrada;
+  - Estratégias de nomeação: nome original, hash hexadecimal ou hash perceptual;
+- **Extração automática de metadados**:
   - Tamanho do arquivo, dimensões, tipo e formato da imagem;
   - Informações EXIF (quando disponíveis);
   - Domínio de origem do link (útil para análise de proveniência);
