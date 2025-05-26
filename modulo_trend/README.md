@@ -1,6 +1,6 @@
 <img src="logo_moodie_trend.png" alt="Logo MOODIE TREND" width="350"/>
 
-# MOODIE Image Trends &nbsp;·&nbsp; Múdulo de análise de tendências
+# MOODIE Image Trends &nbsp;·&nbsp; Módulo de análise de tendências
 > **Uma trilha de aprendizado visual para quem ainda não programa.**
 
 MOODIE Image Trends é um _notebook_ que transforma **uma coleção de imagens** num
