@@ -83,7 +83,7 @@ O projeto encontra-se em **fase beta** e está em desenvolvimento contínuo. Con
 
 Este repositório está sob uma **Licença de Uso Restrito com Atribuição** (acadêmico e não‑comercial).    
 O conteúdo pode ser utilizado para fins acadêmicos e não-comerciais com devida atribuição ao autor.  
-Modificações ou redistribuição exigem permissão. Para mais detalhes, consulte o arquivo [`LICENSE.txt`](./LICENSE.txt) para mais detalhes.
+Modificações ou redistribuição exigem permissão. Para mais detalhes, consulte o arquivo [`LICENSE.txt`](LICENSE.txt) para mais detalhes.
 
 ## Como citar moodie (formato APA):
 
