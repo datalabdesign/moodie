@@ -87,7 +87,7 @@ Modificações ou redistribuição exigem permissão. Para mais detalhes, consul
 
 ## Como citar moodie (formato APA):
 
-Bitencourt, E. (2025). *MOODIE Image Trends: Modular Observational & Operational Design Image Explorer* (Versão beta) [Repositório GitHub]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
+Bitencourt, E. (2025). *MOODIE Image Trends: Modular Observational & Operational Design Image Explorer Light* (Versão beta) [Repositório GitHub]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
 
 <p align="left">
   <sub>Site: <a href="https://datalab.org">datalab.org</a> &nbsp;·&nbsp; Instagram: <a href="https://www.instagram.com/datalabdesign">@datalabdesign</a></sub>
