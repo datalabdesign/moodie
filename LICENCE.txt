@@ -1,0 +1,29 @@
+Licença de Uso Restrito com Atribuição
+
+Este repositório e seus arquivos associados (incluindo notebooks Jupyter, scripts, imagens e materiais auxiliares) são disponibilizados para fins educacionais, de pesquisa e uso não-comercial, sob as seguintes condições:
+
+1. É obrigatória a atribuição clara e visível ao autor original em qualquer forma de uso, total ou parcial, incluindo apresentações, publicações, repositórios derivados, aulas, cursos ou relatórios.
+
+2. Não é permitida a modificação, adaptação, redistribuição ou reedição deste material, total ou parcial, sem autorização expressa e por escrito do autor.
+
+3. É permitido o uso do código e dos materiais como referência ou apoio, desde que não sejam redistribuídos ou utilizados como base para produtos, ferramentas ou serviços derivados, sem consentimento prévio.
+
+4. O uso comercial, em qualquer modalidade, não é permitido sem negociação direta com o autor.
+
+5. Os arquivos e códigos disponibilizados neste repositório não estão licenciados sob um modelo de software livre ou licença open source padrão (como MIT, GPL ou Apache) e não devem ser reutilizados como tais.
+
+6. A cópia literal, modificação ou redistribuição não autorizada, mesmo que com atribuição, constitui violação desta licença.
+
+---
+
+Autor: Elias Bitencourt  
+Email: ebitencourt@uneb.br  
+Instituição: Universidade do Estado da Bahia – UNEB  
+Laboratório: Datalab Design (CNPq)  
+Ano: 2025
+
+---
+
+Como citar este repositório (formato APA):
+
+Bitencourt, E. (2025). *MOODIE: Modular Observational & Operational Design Image Explorer* (Versão beta) [Repositório GitHub]. Datalab/Design – Universidade do Estado da Bahia. https://github.com/datalabdesign/moodie
