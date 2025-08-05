@@ -6,7 +6,8 @@
 
 Este módulo foi pensado como uma introdução prática ao uso de imagens em pipelines de pesquisa em design, oferecendo desde a coleta até os primeiros metadados estruturados que alimentam etapas posteriores de análise visual e exploração criativa.
 
-[![Abrir no Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_grabber/01_MOODIE_GRABBER_v2_BETA.ipynb)
+[![Abrir no Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_grabber/moodie_grabber_clean.ipynb)
+
 
 
 ## ✦ Atualizações (08 / 05 / 2025)
