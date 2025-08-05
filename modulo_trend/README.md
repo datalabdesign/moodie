@@ -94,36 +94,64 @@ Bibliotecas extras são instaladas automaticamente pelo notebook ( `tensorflow
 | CSV/IMAGEM | Random Sample | Utilize para selecionar um número aleatório de amostras do dataset inteiro, sem considerar as categorias. Útil para obter uma visão geral rápida do dataset ou quando as categorias não são relevantes para a amostragem. Se estiver usando apenas imagens, esta é a única opção disponível para criar um subconjunto aleatório. |
 
 
+Claro. Abaixo está a nova versão da seção **2.2 Extração de Características Visuais das Imagens**, já formatada para substituição direta no seu arquivo `README.md`, com a tabela reorganizada por arquitetura e **uma nova coluna com os papers de referência** (com links clicáveis).
+
+---
+
 ### 2.2 Extração de Características Visuais das Imagens
-> **Objetivo**  
-> Converter cada imagem em um vetor numérico (embedding) usando modelos CNN pré‑treinados, fornecendo a base matemática para todas as comparações de similaridade visual.
 
-O Moodie utiliza modelos de inteligência artificial pré-treinados para "ler" suas imagens e transformá-las em representações numéricas, chamadas de "características visuais" (ou *features*). Pense nisso como se cada imagem ganhasse um código secreto que descreve o que ela contém visualmente.
+> **Objetivo**
+> Converter cada imagem em um vetor numérico (*embedding*) usando modelos de visão computacional pré‑treinados, fornecendo a base matemática para todas as comparações de similaridade visual.
 
-**Por que isso é importante?**
+O Moodie utiliza diferentes modelos de inteligência artificial para "ler" suas imagens e transformá-las em representações numéricas, chamadas de *features*. Essas representações possibilitam análises visuais como agrupamento, comparação semântica e construção de dashboards temáticos.
 
-Essa etapa permite que o Moodie compare e encontre similaridades entre as imagens de uma maneira que um computador consegue entender. É a base para todas as análises visuais que você poderá fazer, como encontrar imagens parecidas, agrupar imagens por estilo, e identificar tendências visuais.
+Além dos vetores, o Moodie também pode gerar **rótulos** baseados no vocabulário **ImageNet-1k** (para modelos CNN e ViT tradicionais) ou **descrições livres em inglês** (*captions*) para modelos com arquiteturas do tipo encoder-decoder (ViT + LLM).
 
-**Como funciona?**
+Os modelos estão organizados por **arquitetura**, conforme a tabela abaixo:
 
-1.  **Escolha do Modelo:** O Moodie oferece uma lista de modelos pré-treinados (como os mostrados na tabela abaixo). Cada modelo é como um especialista em identificar diferentes tipos de informações visuais. Você pode escolher um ou mais modelos para analisar suas imagens.
-2.  **"Leitura" das Imagens:** O Moodie pega cada uma de suas imagens e a passa pelo modelo escolhido. O modelo realiza uma série de operações para identificar padrões visuais (formas, cores, texturas, objetos, etc.).
-3.  **Criação do "Código Visual":** Para cada imagem, o modelo gera um "código" numérico (o *embedding* ou vetor de características) que resume o que ele "viu".
-4.  **Armazenamento:** Esse "código visual" é guardado em uma nova coluna na sua tabela de dados, chamada `Modelo_features`.
+---
 
-**Dicas importantes:**
+#### Modelos CNN (ImageNet-1k)
 
-* **Processamento:** Essa etapa pode levar algum tempo, especialmente com muitas imagens. Se você não tem um computador potente, comece com uma amostra menor (por exemplo, 100-200 imagens) para testar e entender qual modelo funciona melhor para o seu projeto. Depois, você pode rodar a análise no seu dataset completo.
-* **Escolha do Modelo:** A tabela abaixo descreve brevemente para que tipo de análise cada modelo pode ser mais adequado. Experimentar diferentes modelos pode trazer resultados interessantes!
+| Modelo              | Tipo de Saída                    | Indicação de Uso                                                                 | Referência                                                    |
+| ------------------- | -------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| **MobileNetV2**     | Features + Top‑3 ImageNet labels | Análise rápida de cor/textura; ideal para grandes coleções e testes iniciais     | [Sandler et al., 2018](https://arxiv.org/abs/1801.04381)      |
+| **VGG16**           | Features + Top‑3 ImageNet labels | Foco em textura e borda; útil para agrupamentos visuais por aparência local      | [Simonyan & Zisserman, 2014](https://arxiv.org/abs/1409.1556) |
+| **ResNet50**        | Features + Top‑3 ImageNet labels | Equilíbrio entre forma global e textura; bom para diferenciar categorias         | [He et al., 2015](https://arxiv.org/abs/1512.03385)           |
+| **InceptionV3**     | Features + Top‑3 ImageNet labels | Sensível à variação de escala; útil para detectar objetos em proporções diversas | [Szegedy et al., 2015](https://arxiv.org/abs/1512.00567)      |
+| **EfficientNet-B0** | Features + Top‑3 ImageNet labels | Estável em cenas naturais; bom para detalhes finos e contexto                    | [Tan & Le, 2019](https://arxiv.org/abs/1905.11946)            |
 
-| Modelo | Foco Principal | Bom para identificar… |
-|---|---|---|
-| **VGG16** (padrão) | Texturas e cor global | Aparência geral das cores e texturas predominantes nas imagens. |
-| **ResNet50** | Formas complexas e objetos | Formas de objetos, detalhes de produtos e estruturas visuais mais complexas. |
-| **MobileNetV2** | Texturas e cor global (rápido) | Análise rápida de cores e texturas, ideal para grandes coleções e testes iniciais. |
-| **InceptionV3** | Variação de escala e detalhes | Detalhes finos e objetos em diferentes tamanhos dentro da mesma imagem. |
+---
 
-Ao final dessa etapa, suas imagens estarão representadas numericamente, prontas para serem exploradas e analisadas visualmente com as outras ferramentas do Moodie!
+#### Vision Transformers (ViT) – ImageNet-1k
+
+| Modelo        | Tipo de Saída                    | Indicação de Uso                                                               | Referência                                                   |
+| ------------- | -------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| **ViT16\_1k** | Features + Top‑3 ImageNet labels | Capta composição e co-ocorrência; útil para peças gráficas e layouts complexos | [Dosovitskiy et al., 2020](https://arxiv.org/abs/2010.11929) |
+
+---
+
+#### ViT + Captioning (Encoder–Decoder multimodal)
+
+| Modelo          | Tipo de Saída                        | Indicação de Uso                                                               | Referência                                                                                                                                               |
+| --------------- | ------------------------------------ | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ViT-GPT2**    | Features + Descrição automática (EN) | Gera captions curtos; ideal para triagem, descrição de ação ou contexto visual | [ViT](https://arxiv.org/abs/2010.11929) + [GPT-2](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) |
+| **BLIP (base)** | Features + Descrição automática (EN) | Gera descrições mais semânticas; útil para exploração temática e dashboards    | [Li et al., 2022](https://arxiv.org/abs/2201.12086)                                                                                                      |
+
+---
+
+> **Importante:** modelos CNN e ViT (ImageNet) retornam rótulos limitados ao vocabulário do ImageNet-1k (\~1000 categorias), enquanto os modelos captioning geram frases livres em inglês com base no conteúdo da imagem. Esses *captions* são especialmente úteis para análises semânticas, clustering temático e visualização baseada em tópicos.
+
+---
+
+**Como funciona o processo:**
+
+1. **Seleção do modelo:** Você pode escolher um ou mais modelos, misturando arquiteturas se desejar.
+2. **Extração de características:** Cada imagem é processada de acordo com o modelo escolhido.
+3. **Geração de vetores e rótulos:** São criadas até 3 colunas por modelo: `*_features`, `*_labels`, `*_scores`.
+4. **Armazenamento e visualização:** Os resultados são salvos em CSV e usados pelos demais módulos do Moodie.
+
+> Dica: para descrições mais precisas de ação ou contexto, utilize modelos como o BLIP ou o ViT-GPT2. Para performance mais rápida com acervos grandes, comece com MobileNetV2 ou EfficientNet-B0.
 
 
 ---
