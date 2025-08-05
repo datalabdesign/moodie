@@ -163,6 +163,7 @@ Os modelos estão organizados por **arquitetura**, conforme a tabela abaixo:
 
 Depois de extrair as características visuais das suas imagens, o Moodie pode identificar e remover automaticamente imagens duplicadas ou muito semelhantes em sua coleção. Isso é útil para limpar seu dataset, evitar redundâncias nas análises futuras e garantir que as tendências visuais identificadas sejam representativas de imagens únicas.
 
+**Exemplo Visual:**
 ![](exemplo_duplicatas.png)
 
 **Como o Moodie identifica duplicatas?**
