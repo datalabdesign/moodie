@@ -61,8 +61,6 @@ Bibliotecas extras são instaladas automaticamente pelo notebook ( `tensorflow
 
 ## 1. Visão geral do fluxo
 
-## 1. Visão geral do fluxo
-
 | Etapa | O que entra | O que acontece | O que sai | Usos Potenciais (O que permite fazer) |
 |-------|-------------|---------------|-----------|---------------------------------------|
 | 1. Importação | • Pasta **`imagens/`**<br>• (Opcional) arquivo **CSV** com metadados | Notebook carrega imagens; se houver CSV, ele associa cada linha à imagem pelo nome do arquivo. | `global_df` (DataFrame) com pelo menos a coluna de nome da imagem e quaisquer colunas extras do CSV | Organizar e catalogar coleções visuais, associar informações textuais (metadados) às imagens para análise posterior. |
