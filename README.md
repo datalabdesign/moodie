@@ -9,7 +9,7 @@ O fluxo completo é dividido em **dois notebooks independentes, porém complemen
 | Sequência | Notebook (Google Colab) | Para que serve? | Abrir agora |
 |-----------|-------------------------|-----------------|-------------|
 | **1.** | **MOODIE Grabber**<br><sub>Coleta & pré‑processamento</sub> | Faz o _download_ em lote a partir de um CSV de links, renomeia arquivos, remove duplicatas e gera o primeiro dataset estruturado. | [![Abrir no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_grabber/01_MOODIE_GRABBER_v2_BETA.ipynb) |
-| **2.** | **MOODIE Image Trends**<br><sub>Análise, cores, recomendações</sub> | Recebe uma **pasta de imagens** (vinda do Grabber ou sua própria), extrai *features*, remove duplicatas, cria mapas de cor, image‑walls e um sistema de recomendação visual Top N. | [![Abrir no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_trend/MOODIE_IMAGE_TREND_LIGHT_V01.ipynb) |
+| **2.** | **MOODIE Image Trends**<br><sub>Análise, cores, recomendações</sub> | Recebe uma **pasta de imagens** (vinda do Grabber ou sua própria), extrai *features*, remove duplicatas, cria mapas de cor, image‑walls e um sistema de recomendação visual Top N. | [![Abrir no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_trend/MOODIE_IMAGE_TREND_LIGHT_V02.ipynb) |
 
 > **Fluxo resumido** • *(a) Colete ⇢ (b) Explore ⇢ (c) Recomende)*  
 > 1️⃣ **Grabber** baixa/organiza ► 2️⃣ **Trends** analisa, gera paletas, painéis e recomendações.
