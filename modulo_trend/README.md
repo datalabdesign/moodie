@@ -1,19 +1,14 @@
 <img src="logo_moodie_trend.png" alt="Logo MOODIE TREND" width="350"/>
 
-# MOODIE Image Trends &nbsp;·&nbsp; Módulo de análise de tendências
-> **Uma trilha de aprendizado visual para quem ainda não programa.**
+# MOODIE Image Trends · Módulo de Análise de Tendências
+> **Um percurso de aprendizagem visual para quem ainda não programa.**
 
-MOODIE Image Trends é um _notebook_ que transforma **uma coleção de imagens** num
-conjunto de **painéis, paletas e recomendações** prontas para análise de tendências. 
+MOODIE Image Trends é um notebook que transforma **uma coleção de imagens** em um conjunto de **dashboards, paletas e recomendações** prontas para análise de tendências.
 
-Ele foi pensado para disciplinas de **Pesquisa Visual**, **Design de Moda**,
-**UX Research** e **Semiótica** onde o aluno pode tirar proveito de técnicas avançadas de IA integradas em processos de design **sem precisar escrever código**.
+Ele foi desenvolvido para disciplinas de **Pesquisa Visual**, **Design de Moda**, **Pesquisa em UX**, **Métodos Digitais** e **Humanidades Digitais**, nas quais estudantes se beneficiam de técnicas avançadas de IA integradas aos processos de design **sem precisar escrever código**.
 
+Sua motivação central não é oferecer uma solução plug and play para análise visual, mas apresentar, de modo crítico e metodologicamente orientado, o uso de modelos de visão computacional como recursos analíticos para trabalhar com visualidades e grandes acervos de imagens digitais. Embora o MOODIE possa, de fato, ser utilizado como uma ferramenta pronta para uso, ele foi originalmente concebido como uma interface plug and play para examinar e comparar criticamente as implicações metodológicas de diferentes arquiteturas de visão computacional aplicadas à pesquisa visual.
 
-MOODIE Image Trends_ é um notebook interativo para Google Colab que transforma **uma coleção de imagens** num
-conjunto de **painéis, paletas e recomendações** prontas para análise de tendências. 
-
-Inicialmente concebido como ferramenta pedagógica para as disciplinas de Introdução aos métodos digitais aplicados ao design e visualização de dados do curso de design da UNEB, o objetivo é permitir que estudantes de Design explorem de forma prática processos de exploração em Moda, editorial, UX Research e metodologia projetual, integrando conceitos de machine learning, vetores e modelos de visão computacional, sem a necessidade de codificação. Pesquisadores interessados em mapear padrões visuais ou detectar tendências em grandes acervos também encontrarão nele um ponto de partida para análises mais aprofundadas.
 
 [![Abrir no Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_trend/MOODIE_IMAGE_TREND_LIGHT_V02.ipynb)
 
@@ -329,8 +324,6 @@ A visualização do corpus é um recurso de apoio para obter *insights* rápidos
 | **Peso do Embedding**        | Quanto a semelhança visual pesa em relação aos metadados extras.  | Ajuste no *slider* (0 – 10). |
 
 ---
-
-#### 2. Métricas de Similaridade (embeddings)
 
 #### 2. Métricas de Similaridade (embeddings)
 
