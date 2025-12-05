@@ -91,9 +91,6 @@ Bibliotecas extras são instaladas automaticamente pelo notebook ( `tensorflow
 | CSV | Upsample | Utilize para aumentar o tamanho de categorias minoritárias, replicando amostras existentes. Útil para balancear datasets desequilibrados, onde algumas categorias têm muito menos exemplos que outras, o que pode prejudicar o treinamento de modelos de *machine learning*. |
 | CSV/IMAGEM | Random Sample | Utilize para selecionar um número aleatório de amostras do dataset inteiro, sem considerar as categorias. Útil para obter uma visão geral rápida do dataset ou quando as categorias não são relevantes para a amostragem. Se estiver usando apenas imagens, esta é a única opção disponível para criar um subconjunto aleatório. |
 
-
-Claro. Abaixo está a nova versão da seção **2.2 Extração de Características Visuais das Imagens**, já formatada para substituição direta no seu arquivo `README.md`, com a tabela reorganizada por arquitetura e **uma nova coluna com os papers de referência** (com links clicáveis).
-
 ---
 
 ### 2.2 Extração de Características Visuais das Imagens
@@ -259,7 +256,7 @@ EXIF (Exchangeable Image File Format) são metadados incorporados em arquivos de
 * **Informações de Lente:** Modelo da lente utilizada.
 * **Dados de GPS:** Coordenadas geográficas de onde a foto foi tirada (latitude e longitude).
 
-Esses metadados podem ser valiosos para análises contextuais e para entender a origem das suas imagens. O Moodie verifica a presença dessas informações e as disponibiliza para você explorar em seus dados.
+Esses metadados podem ser importantes para análises contextuais e para entender a origem das suas imagens. O Moodie verifica a presença dessas informações e as disponibiliza para você explorar em seus dados.
 
 ---
 
