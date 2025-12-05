@@ -1,7 +1,7 @@
 <img src="https://github.com/datalabdesign/moodie/blob/main/logo_moodie_all.png" alt="Logo MOODIE ALL" width="600"/>
 
 # MOODIE · Modular Observational & Operational Design Image Explorer (Light)
-> **Ferramenta open‑source (beta) para coleta, exploração e análise visual de grandes acervos de imagens — sem precisar programar.**
+> **Ferramenta open‑source (beta) para coleta, exploração e análise visual de grandes acervos de imagens sem precisar programar.**
 
 MOODIE foi criado como um **laboratório pedagógico** que aproxima estudantes e profissionais de Design das metodologias de visão computacional, mineração de dados visuais e mapeamento de tendências.  
 O fluxo completo é dividido em **dois notebooks independentes, porém complementares**:
