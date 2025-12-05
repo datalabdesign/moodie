@@ -158,7 +158,7 @@ Depois de extrair as características visuais das suas imagens, o Moodie pode id
 
 **Como o Moodie identifica duplicatas?**
 
-O Moodie utiliza três métodos inteligentes para encontrar duplicatas, verificando diferentes níveis de semelhança:
+O Moodie utiliza três métodos para encontrar duplicatas, verificando diferentes níveis de semelhança:
 
 1.  **Cópias Exatas (Hash MD5):** Procura por arquivos que são idênticos byte a byte. É como verificar se dois arquivos são exatamente a mesma cópia.
 2.  **Cópias Quase Iguais (pHash):** Identifica imagens que são muito parecidas visualmente, mesmo que tenham pequenas diferenças (como compressão ou pequenas edições). Pense nisso como encontrar fotos quase idênticas, mas com pequenas variações.
@@ -185,6 +185,7 @@ O Moodie utiliza três métodos inteligentes para encontrar duplicatas, verifica
 
 Ao utilizar a remoção de duplicatas do Moodie, você garante uma base de dados visual mais limpa e confiável para suas explorações e análises de tendências!
 
+> **Observação:** Se você está estudando memes, viralização ou padrões baseados em repetição, remover imagens duplicadas pode *não* ser recomendado. O Moodie está aqui para ajudar, mas quem deve tomar as decisões mais adequadas para a sua pesquisa continua sendo **você**.
 ---
 
 ### 2.4 Análise de Cores e Geração de Paletas
@@ -304,12 +305,14 @@ A visualização do corpus é um recurso de apoio para obter *insights* rápidos
 
 ---
 
-### 2.6 · Moodie Trends — Sistema de Recomendação
+### 2.6 · Moodie Trends — Sistema de Recomendação
 
 > **Objetivo**  
-> Encontrar imagens similares, montar curadorias e gerar painéis de cor usando combinações de **similaridade visual (embeddings)** e **metadados opcionais**.
+> Encontrar imagens similares, montar curadorias e gerar painéis de cor usando combinações de **similaridade visual (embeddings)** e **metadados opcionais**. Mas, além desses objetivos, o Moodie Trends pode ser utilizado como um recurso prático para examinar padrões, mapear tendências dentro de um acervo ou mesmo realizar buscas visuais em uma biblioteca de imagens. 
 
----
+Este módulo foi concebido com dois propósitos principais: ensinar, de forma prática e intuitiva, o racional de um algoritmo de recomendação e investigar vieses e discrepâncias que surgem quando diferentes arquiteturas de visão computacional são inseridas dentro do mesmo sistema de recomendação. A ideia é [*pegar de empréstimo a lógica algorítmica*](https://eliasbitencourt.com/pt/pesquisa) de sistemas de recomendação híbridos e reaplicá-la como estratégia metodológica. Ou seja, utilizar algoritmos de recomendação **para pesquisar sobre as próprias curadorias produzidas por sistemas de recomendação**.  
+
+
 
 ![](dashboard_exemplo.png)
 
