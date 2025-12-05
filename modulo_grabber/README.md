@@ -128,7 +128,7 @@ Antes de baixar, escolha como deseja nomear os arquivos:
 - **HEX**: gera nomes únicos com identificadores hexadecimais;
 - **pHash**: usa o hash perceptual da imagem, útil para identificar visualmente imagens parecidas.
 
-### Após configurar, **basta seguir executando as células uma a uma**, sempre lendo as instruções e respondendo os widgets exibidos. O MOODIE cuidará do restante automaticamente.  Ao final da execução, será gerado um dataset `.csv` com os dados das imagens baixadas e você poderá acessar tudo em cada um dos subdiretórios criados conforme a árvore indicada acima.
+> **Após configurar, basta seguir executando as células uma a uma**, sempre lendo as instruções e respondendo os widgets exibidos. O MOODIE cuidará do restante automaticamente.  Ao final da execução, será gerado um dataset `.csv` com os dados das imagens baixadas e você poderá acessar tudo em cada um dos subdiretórios criados conforme a árvore indicada acima.
 
 
 
