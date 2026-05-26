@@ -13,7 +13,7 @@ O Companion não substitui o web app. Ele prepara o corpus para que a análise p
 | Componente | Função | Ambiente |
 |---|---|---|
 | MOODIE Web | Exploração visual, comparação de regimes, imagewalls, Pixel Eye, MoodieBoard, filtros, overlays e leitura de projetos `.moodie` | Navegador |
-| MOODIE Web Companion | Organização do projeto, importação de imagens/metadados, amostragem, extração de features, labels/captions e exportação `.moodie` | Google Colab / Python [![Abrir no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datalabdesign/moodie/blob/main/modulo_grabber/01_MOODIE_GRABBER_v2_BETA.ipynb)|
+| MOODIE Web Companion | Organização do projeto, importação de imagens/metadados, amostragem, extração de features, labels/captions e exportação `.moodie` | Google Colab / Python [![Abrir no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/datalabdesign/moodie/blob/main/MOODIE_WEB_COMPANION_V2.ipynb)|
 | Arquivo `.moodie` | Pacote autocontido com thumbnails, metadata, features, projeções e manifesto do projeto | Intercâmbio entre Companion e Web |
 
 ## Para que serve
