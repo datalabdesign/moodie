@@ -149,6 +149,10 @@ Depois da extração, use o módulo **MOODIE Web Exporter**. Ele permite selecio
 
 Antes de gerar o arquivo, clique em **Estimar tamanho**. A estimativa informa número de linhas, imagens únicas, peso aproximado de thumbnails, metadata, features e tamanho total. Quando a redução PCA está ativa, a estimativa também informa a dimensão final e a variância explicada por modelo.
 
+Após o download, acesse o [MOODIE Web](https://moodie.datalabdesign.org) e arraste o seu arquivo.moodie para o campo específico. (FIg 01) Se você quiser experimentar o moodie sem extrair features de modelos avançados, basta subir um ZIP com suas imagens e um CSV/JSON com os metadados da imagem. Se for esse o caso, garanta que uma coluna contém o nome das imagens exatamente como elas estão nomeadas no arquivo ZIP.
+
+<img src="https://github.com/datalabdesign/moodie/blob/main/dropzone.png" alt="dropzone" width="600"/>
+
 ## Modelos disponíveis
 
 O Companion organiza os modelos por arquitetura. A escolha do modelo importa porque cada arquitetura descreve a imagem segundo uma lógica distinta. O objetivo não é tratar o embedding como uma verdade visual, mas como uma inscrição vetorial situada: um modo específico de tornar imagens comparáveis.
